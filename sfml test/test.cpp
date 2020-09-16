@@ -1,10 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Animation.h"
+#include "Menu.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Close | sf::Style::Default);
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!", sf::Style::Close | sf::Style::Default);
+
+	Menu menu(window.getSize().x, window.getSize().y);
+
 	sf::RectangleShape player(sf::Vector2f(200.0f, 300.0f));
 	player.setPosition(206.0f, 206.0f);
 	sf::Texture playerTexture;
@@ -62,6 +66,8 @@ int main()
 		player.setTextureRect(animation.uvRect);
 		
 		window.clear();
+
+		menu.draw(window);
 		window.draw(player);
 		window.display();
 	}
